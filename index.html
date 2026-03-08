@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z-TECH · your digital partner</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #1e1e2f;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* header / navbar */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(6px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #eef2f6;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo span {
+            background: none;
+            -webkit-text-fill-color: #0f172a;
+            font-weight: 300;
+            margin-left: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #1e293b;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .nav-links .contact-btn {
+            background: #1e1e2f;
+            color: white;
+            padding: 0.5rem 1.4rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid #1e1e2f;
+        }
+
+        .nav-links .contact-btn:hover {
+            background: #2563eb;
+            border-color: #2563eb;
+            color: white;
+        }
+
+        .mobile-menu-icon {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #0f172a;
+        }
+
+        /* hero */
+        .hero {
+            max-width: 1280px;
+            margin: 2rem auto 3rem;
+            padding: 2rem 2rem 3rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .hero-content {
+            flex: 1 1 400px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(to right, #0f172a, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #334155;
+            max-width: 550px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.9rem 2.2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 10px 20px -5px rgba(37,99,235,0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #cbd5e1;
+            color: #1e293b;
+            padding: 0.9rem 2.2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            border-color: #2563eb;
+            color: #2563eb;
+        }
+
+        /* Hero Image - Fully Responsive */
+        .hero-image {
+            flex: 1 1 300px;
+            background: linear-gradient(145deg, #f1f5f9, #ffffff);
+            border-radius: 40px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 25px 40px -15px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 24px;
+            object-fit: cover;
+            box-shadow: 0 10px 25px -8px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.02);
+        }
+
+        /* services section */
+        .services-section {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #475569;
+            max-width: 680px;
+            margin: 0 auto 3rem;
+            font-size: 1.2rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: #ffffff;
+            padding: 2rem 1.8rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 35px -8px rgba(0,0,0,0.04);
+            border: 1px solid #f0f4f9;
+            transition: 0.25s ease;
+        }
+
+        .service-card:hover {
+            transform: scale(1.02);
+            border-color: #b3d0ff;
+            box-shadow: 0 25px 35px -10px rgba(37,99,235,0.12);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            background: #e6edff;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            margin-bottom: 1.8rem;
+            color: #2563eb;
+        }
+
+        .service-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.7rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        /* training highlight */
+        .training-badge {
+            background: #fef9c3;
+            color: #854d0e;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.3rem 1rem;
+            border-radius: 60px;
+            display: inline-block;
+            margin-top: 1.2rem;
+        }
+
+        /* footer */
+        .footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            margin-top: 5rem;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2.5rem;
+        }
+
+        .footer-col {
+            flex: 1 1 200px;
+        }
+
+        .footer-col .logo {
+            font-size: 2rem;
+            background: linear-gradient(135deg, #94a3b8, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .footer-col p {
+            margin: 1rem 0 1.5rem;
+            color: #94a3b8;
+            max-width: 260px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .social-icons a {
+            color: #cbd5e1;
+            font-size: 1.4rem;
+            transition: 0.2s;
+        }
+
+        .social-icons a:hover {
+            color: #ffffff;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 1rem;
+            border-radius: 60px;
+            overflow: hidden;
+            border: 1px solid #334155;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            background: #1e293b;
+            color: white;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            background: #2563eb;
+            border: none;
+            color: white;
+            padding: 0 1.3rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .newsletter-form button:hover {
+            background: #3b82f6;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #1e293b;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            color: #64748b;
+        }
+
+        /* responsive */
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                margin-top: 1.5rem;
+                background: white;
+                padding: 1.5rem 1rem;
+                border-radius: 30px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .mobile-menu-icon {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            /* Adjust hero image for tablet */
+            .hero-image {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            /* Adjust hero image for mobile */
+            .hero-image {
+                padding: 0.8rem;
+                border-radius: 30px;
+            }
+            
+            .hero-image img {
+                border-radius: 16px;
+            }
+        }
+
+        /* tiny extra */
+        .student-chip {
+            background: #dbeafe;
+            color: #1e40af;
+            border-radius: 100px;
+            padding: 0.2rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">Z-TECH<span></span></div>
+            <div class="mobile-menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <div class="nav-links" id="navLinks">
+                <a href="#">Home</a>
+                <a href="#services">Services</a>
+                <a href="#training">Trainings</a>
+                <a href="#">Projects</a>
+                <a href="#">About</a>
+                <a href="contact.html" class="contact-btn">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Code · Create · Convert</h1>
+                <p>Your end-to-end IT partner — from web & mobile to marketing, software, video, and student training.</p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn-primary">Explore services</a>
+                    <a href="#" class="btn-outline">Get free quote</a>
+                </div>
+                <div style="margin-top: 2rem; display: flex; gap: 1.2rem; color:#2563eb; font-weight: 500;">
+                    <span><i class="fas fa-check-circle"></i> 50+ clients</span>
+                    <span><i class="fas fa-check-circle"></i> 6+ expert domains</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/z-tech image.jpg" alt="IT solutions illustration - modern technology workspace">
+                <!-- Responsive image with proper alt text -->
+            </div>
+        </section>
+
+        <!-- SERVICES (including all you mentioned) -->
+        <section id="services" class="services-section">
+            <h2 class="section-title">What we build & boost</h2>
+            <div class="section-sub">Complete digital services under one roof – from development to creative content and training.</div>
+
+            <div class="services-grid">
+                <!-- 1. Website development -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Website development</h3>
+                    <p>Responsive, high-performance websites, e‑commerce, portals and custom CMS solutions.</p>
+                </div>
+                <!-- 2. Mobile App development -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Mobile applications</h3>
+                    <p>Native & cross-platform apps for iOS and Android with modern UI and smooth backend.</p>
+                </div>
+                <!-- 3. Social Media marketing -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-hashtag"></i></div>
+                    <h3>Social Media marketing</h3>
+                    <p>Strategy, community management, ad campaigns & analytics to grow your brand.</p>
+                </div>
+                <!-- 4. Software Development -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-cogs"></i></div>
+                    <h3>Software development</h3>
+                    <p>Custom business software, CRM, ERP, automation tools tailored to your workflow.</p>
+                </div>
+                <!-- 5. Video Editing -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-video"></i></div>
+                    <h3>Video editing</h3>
+                    <p>Professional post‑production, motion graphics, colour grading & promotional clips.</p>
+                </div>
+                <!-- 6. Content creation -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-pen-fancy"></i></div>
+                    <h3>Content creation</h3>
+                    <p>Copywriting, graphic design, branding, and multimedia content that tells your story.</p>
+                </div>
+            </div>
+
+            <!-- dedicated TRAINING block for students (extra highlight) -->
+            <div id="training" style="margin-top: 4rem; background: #f8fafc; border-radius: 48px; padding: 2.5rem 2rem; text-align: center; border: 1px solid #e2e8f0;">
+                <div style="font-size: 3rem; color: #2563eb; margin-bottom: 1rem;"><i class="fas fa-graduation-cap"></i></div>
+                <h3 style="font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem;">Trainings for Students <span class="student-chip">enroll now</span></h3>
+                <p style="max-width: 700px; margin: 1rem auto 2rem; color: #334155; font-size: 1.2rem;">Kickstart your career with industry-relevant courses: full‑stack development, digital marketing, video editing, and software fundamentals. Mentored by experts.</p>
+                <div style="display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap;">
+                    <span style="background: #ffffff; padding: 0.6rem 1.6rem; border-radius: 60px; font-weight: 500; box-shadow: 0 2px 10px #e2e8f0;"><i class="fas fa-code" style="color:#2563eb;"></i> Web dev bootcamp</span>
+                    <span style="background: #ffffff; padding: 0.6rem 1.6rem; border-radius: 60px; font-weight: 500; box-shadow: 0 2px 10px #e2e8f0;"><i class="fas fa-mobile-alt" style="color:#2563eb;"></i> Flutter / native</span>
+                    <span style="background: #ffffff; padding: 0.6rem 1.6rem; border-radius: 60px; font-weight: 500; box-shadow: 0 2px 10px #e2e8f0;"><i class="fas fa-video" style="color:#2563eb;"></i> Video editing master</span>
+                    <span style="background: #ffffff; padding: 0.6rem 1.6rem; border-radius: 60px; font-weight: 500; box-shadow: 0 2px 10px #e2e8f0;"><i class="fas fa-chart-line"></i> social media cert</span>
+                </div>
+                <div style="margin-top: 2.5rem;">
+                    <a href="#" class="btn-primary" style="background: #0f172a; box-shadow: none;">→ View all courses</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- tiny CTA separator -->
+        <div style="max-width: 1280px; margin: 2rem auto 0; padding: 0 2rem;">
+            <hr style="border: 1px solid #ecf3fa">
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="logo">Z-TECH<span style="color:white; -webkit-text-fill-color: white;"></span></div>
+                <p>One stop for development, marketing, creative & student training.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#training">Student trainings</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">Web development</a></li>
+                    <li><a href="#">Mobile apps</a></li>
+                    <li><a href="#">Social media</a></li>
+                    <li><a href="#">Software dev</a></li>
+                    <li><a href="#">Video & content</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Stay updated</h4>
+                <p>Get news & student offers</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="your@email.com" id="footerEmail">
+                    <button id="subscribeBtn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+                <p style="margin-top: 1.5rem; font-size: 0.9rem;"><i class="fas fa-phone-alt"></i> +92 300 2457241</p>
+                <p style="font-size: 0.9rem;"><i class="fas fa-envelope"></i> info@z-tech.com</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Z-TECH. All rights reserved. — your digital growth partner.
+        </div>
+    </footer>
+
+    <!-- very light JavaScript: mobile toggle + newsletter demo alert -->
+    <script>
+        (function() {
+            // mobile menu toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navLinks.classList.toggle('show');
+                });
+
+                // close if click outside (optional)
+                document.addEventListener('click', function(event) {
+                    if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) {
+                        navLinks.classList.remove('show');
+                    }
+                });
+            }
+
+            // tiny subscribe button interaction
+            const subBtn = document.getElementById('subscribeBtn');
+            if (subBtn) {
+                subBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const emailInput = document.getElementById('footerEmail');
+                    const email = emailInput.value.trim();
+                    if (email && email.includes('@')) {
+                        alert(`📬 Thanks for subscribing! (demo) we’ll notify ${email}`);
+                        emailInput.value = '';
+                    } else {
+                        alert('Please enter a valid email address.');
+                    }
+                });
+            }
+
+            // // optional: contact btn and other nav links smooth scroll (just for completeness)
+            // const contactBtn = document.querySelector('.contact-btn');
+            // if (contactBtn) {
+            //     contactBtn.addEventListener('click', function(e) {
+            //         e.preventDefault();
+            //         alert('📞 Contact page / form — demo. Feel free to reach out :)');
+            //     });
+            // }
+
+            // smooth anchor for services / training (simple)
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === "#") return;
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth' });
+                        // close mobile menu if open
+                        if (navLinks) navLinks.classList.remove('show');
+                    }
+                });
+            });
+        })();
+    </script>
+    <!-- (no external js, all embedded) -->
+</body>
+</html>
